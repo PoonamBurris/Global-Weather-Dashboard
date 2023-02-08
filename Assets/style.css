@@ -1,0 +1,13 @@
+.weather-today{
+    border-style: solid;
+    border-color: black;
+    border-width: 5px;
+}
+#cur-temp,#cur-windSp,#cur-hum {
+    font-size: 20px;
+    margin: 15px 20px;
+} 
+.icon{
+    width :80px;
+    height: 80px;
+}
