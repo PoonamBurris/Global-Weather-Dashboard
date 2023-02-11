@@ -15,7 +15,27 @@ var currentDate = dayjs().format('M/DD/YYYY');
 var currenticon = document.getElementById("c-icon");
 var weather5 =document.getElementById("weather-five");
 var dateone = document.getElementById("date1")
+var datetwo = document.getElementById("date2")
+var datethree = document.getElementById("date3")
+var datefour = document.getElementById("date4")
+var datefive = document.getElementById("date5")
 var tempone = document.getElementById("temp1")
+var temptwo = document.getElementById("temp2")
+var tempthree = document.getElementById("temp3")
+var tempfour = document.getElementById("temp4")
+var tempfive = document.getElementById("temp5")
+var windone = document.getElementById("wind1")
+var windtwo = document.getElementById("wind2")
+var windthree = document.getElementById("wind3")
+var windfour = document.getElementById("wind4")
+var windfive = document.getElementById("wind5")
+var humone = document.getElementById("hum1")
+var humtwo = document.getElementById("hum2")
+var humthree = document.getElementById("hum3")
+var humfour = document.getElementById("hum4")
+var humfive = document.getElementById("hum5")
+
+
 
 
 
@@ -26,7 +46,7 @@ var tempone = document.getElementById("temp1")
         //For displaying current Weather of user inputed place
      var placeValue = data["name"];
      var temp = data[ 'main']['temp'];
-     var tempF = Math.round([((temp -273.15)*9)/5]+32);
+     var tempF = Math.round((temp-273.15) * 1.8 +32);
      var cwindsp = data['wind']['speed'];
      var chumidity = data['main']['humidity'];
      var cicon = data['weather'][0]['icon'];
@@ -52,34 +72,61 @@ var tempone = document.getElementById("temp1")
         }
     })
     .then(coordinates => {
-        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKEY}&cnt=5`)
+        fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKEY}&cnt=40`)
         .then(response => response.json())
         .then(data => {
+            //Forecast for 1 of next 5 days
             console.log("forecast",  data)
-            const forecastlistEL = document.getElementById("forecast-list")
+            var fcdate1 = data ["list"][3]["dt"]
+            var formateddate1 = fcdate1;
+            dateone.innerHTML= formateddate1
+        
+            var fctemp2 = data ["list"][3]["main"]["temp"]
+            var cvfctemp2 = Math.round((fctemp2-273.15) * 1.8 +32);
+            tempone.innerHTML= "Temp: " + cvfctemp2 + " °F"
+
+            var fcwind1 = data ["list"][3]["wind"]["speed"]
+            windone.innerHTML= "Wind: " + fcwind1 + " MPH"
+
+            var fchum1 = data ["list"][3]["main"]["humidity"]
+            humone.innerHTML= "Humidity: " + fchum1 + " %"
+
+
+
+
+
+
+
+
+
+           // const forecastlistEL = document.getElementById("forecast-list")
             
-            data.list.forEach(item => {
-                const fcTemp = item.main.temp;
-                const fcHum = item.main.humidity;
-                const fcWind = item.wind.speed;
-                const fcDate = dayjs(item.dt).format('M/DD/YYYY');
-                const fcContainer = document.createElement("p");
+            //data.list.forEach(item => {
+               // const fcTemp = item.main.temp;
+                //const fcHum = item.main.humidity;
+                //const fcWind = item.wind.speed;
+                //const fcDate = dayjs(item.dt).format('M/DD/YYYY');
+                //const fcContainer = document.createElement("p");
                 
-                const fcTempEL = document.createElement("p");
-                fcTempEL.innerHTML= `Temp: ${fcTemp}`
+                //const fcTempEL = document.createElement("p");
+                //fcTempEL.innerHTML= `Temp: ${fcTemp}`
                 
-                fcTempEL.style.backgroundColor= "grey"
-                fcTempEL.style.color= "white"
-                fcTempEL.style.display= "block"
-                fcContainer.appendChild(fcTempEL)
+               // fcTempEL.style.backgroundColor= "grey"
+               // fcTempEL.style.color= "white"
+                //fcTempEL.style.display= "block"
+               // fcContainer.appendChild(fcTempEL)
 
-                const fcWindEL = document.createElement("p");
-                fcWindEL.innerHTML= `Wind: ${fcWind}`
+                //const fcWindEL = document.createElement("p");
+                //fcWindEL.innerHTML= `Wind: ${fcWind}`
                 
-                fcWindEL.style.backgroundColor= "grey"
-                fcWindEL.style.color= "white"
-                fcWindEL.style.display= "block"
-                fcContainer.appendChild(fcWindEL)
+                //fcWindEL.style.backgroundColor= "grey"
+                //fcWindEL.style.color= "white"
+                //fcWindEL.style.display= "block"
+                //fcContainer.appendChild(fcWindEL)
+
+
+
+               // weather5.innerHTML="5-Day Forecast : ";
 
 
 
@@ -87,17 +134,12 @@ var tempone = document.getElementById("temp1")
 
 
 
-
-
-
-
-                forecastlistEL.appendChild(fcContainer)
+                //forecastlistEL.appendChild(fcContainer)
 
 
             })
         })
-    })
-};
+    }
      
 
        
@@ -106,7 +148,7 @@ var tempone = document.getElementById("temp1")
 
        
         //For displaying current Weather of user inputed place
-         weather5.innerHTML="5-Day Forecast : ";
+        
 
          //for (var i=1; i< 6; i++){
          //   var ftempF = Math.round(data.daily[i].temp.day);
