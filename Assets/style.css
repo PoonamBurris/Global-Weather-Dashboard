@@ -14,3 +14,10 @@
 #forecast-list{
     display: inline-block;
 }
+.container{
+    display: flex;
+    column-gap: 10px;
+}
+.card-body{
+    font-size: 15px;
+}
