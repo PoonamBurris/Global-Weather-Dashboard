@@ -4,7 +4,8 @@ var places =[];
 var apiurl ="https://api.openweathermap.org/data/2.5/forecast?lat={placelat}&lon={placelon}&appid={APIKEY}"
 var inputPlace = document.getElementById("input-place");
 var buttonSearch = document.getElementById("btn-search");
-var searchHis = document.getElementById("sHistory");
+//var searchHis = document.getElementById("sHistory");
+var searchHis = $("#sHistory");
 var weathertoday=$("#weather-today");
 var wToday = document.getElementById("current-title");
 var currentTemp = document.getElementById("cur-temp");
@@ -81,7 +82,7 @@ var fcicon1 = document.getElementById("icon1");
             var formateddate1 = dayjs(fcdate1).format('MM/DD/YYYY');
             dateone.innerHTML= formateddate1
 
-            var fccicon1 = data['list'][3]['weather']['icon'];
+            var fccicon1 = data['list'][3]['weather'][0]['icon'];
             var fciconurl = "http://openweathermap.org/img/w/" + fccicon1 + ".png";
              $('#icon1').attr('src',fciconurl);
         
@@ -99,6 +100,10 @@ var fcicon1 = document.getElementById("icon1");
             var fcdate2 = data ["list"][10]["dt_txt"]
             var formateddate2 = dayjs(fcdate2).format('MM/DD/YYYY');
             datetwo.innerHTML= formateddate2
+
+            var fccicon2 = data['list'][10]['weather'][0]['icon'];
+            var fciconurl = "http://openweathermap.org/img/w/" + fccicon2 + ".png";
+             $('#icon2').attr('src',fciconurl);
         
             var fctemp2 = data ["list"][10]["main"]["temp"]
             var cvfctemp2 = Math.round((fctemp2-273.15) * 1.8 +32);
@@ -114,6 +119,10 @@ var fcicon1 = document.getElementById("icon1");
              var fcdate3 = data ["list"][18]["dt_txt"]
              var formateddate3 = dayjs(fcdate3).format('MM/DD/YYYY');
              datethree.innerHTML= formateddate3
+
+             var fccicon3 = data['list'][18]['weather'][0]['icon'];
+            var fciconurl = "http://openweathermap.org/img/w/" + fccicon3 + ".png";
+             $('#icon3').attr('src',fciconurl);
          
              var fctemp3 = data ["list"][18]["main"]["temp"]
              var cvfctemp3 = Math.round((fctemp3-273.15) * 1.8 +32);
@@ -129,6 +138,10 @@ var fcicon1 = document.getElementById("icon1");
              var fcdate4 = data ["list"][26]["dt_txt"]
              var formateddate4 = dayjs(fcdate4).format('MM/DD/YYYY');
              datefour.innerHTML= formateddate4
+
+             var fccicon4 = data['list'][26]['weather'][0]['icon'];
+            var fciconurl = "http://openweathermap.org/img/w/" + fccicon4 + ".png";
+             $('#icon4').attr('src',fciconurl);
          
              var fctemp4 = data ["list"][26]["main"]["temp"]
              var cvfctemp4 = Math.round((fctemp3-273.15) * 1.8 +32);
@@ -144,6 +157,10 @@ var fcicon1 = document.getElementById("icon1");
              var fcdate5 = data ["list"][34]["dt_txt"]
              var formateddate5 = dayjs(fcdate5).format('MM/DD/YYYY');
              datefive.innerHTML= formateddate5
+
+             var fccicon5 = data['list'][34]['weather'][0]['icon'];
+            var fciconurl = "http://openweathermap.org/img/w/" + fccicon5 + ".png";
+             $('#icon5').attr('src',fciconurl);
          
              var fctemp5 = data ["list"][34]["main"]["temp"]
              var cvfctemp5 = Math.round((fctemp3-273.15) * 1.8 +32);
@@ -154,22 +171,6 @@ var fcicon1 = document.getElementById("icon1");
  
              var fchum5 = data ["list"][34]["main"]["humidity"]
              humfive.innerHTML= "Humidity: " + fchum5 + " %"
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
            // const forecastlistEL = document.getElementById("forecast-list")
             
@@ -200,24 +201,27 @@ var fcicon1 = document.getElementById("icon1");
 
                 weather5.innerHTML="5-Day Forecast : ";
 
-
-
-
-
-
-
                 //forecastlistEL.appendChild(fcContainer)
 
 
-            })
-        })
-    }
-     
+        }
+        )
+    })
 
-       
-
-
-
+let getLocalStorageResults = localStorage.getItem('poonamWeatherDashboard') ?? [];
+            
+  
+    const inputValue = document.getElementById('input-place').value;
+    
+    const tempSet = new Set([...getLocalStorageResults, inputValue]);
+    
+   const arrayFromSet = Array.from(tempSet);
+    
+   getLocalStorageResults = arrayFromSet;
+   localStorage.setItem('poonamWeatherDashboard', arrayFromSet);
+    
+    document.getElementById('sHistory').innerHTML = getLocalStorageResults;
+   searchHis.addClass('s-History');
        
         //For displaying current Weather of user inputed place
         
@@ -228,7 +232,9 @@ var fcicon1 = document.getElementById("icon1");
          //   var fchumidity = data.daily[i].humidity;
          //   var fcicon = data.daily[i].weather[0].icon;
          //   var fcwindsp = 
-         //}
+         }
 
-
-    
+         
+        
+        
+        

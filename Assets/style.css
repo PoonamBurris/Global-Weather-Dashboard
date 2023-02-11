@@ -21,3 +21,11 @@
 .card-body{
     font-size: 15px;
 }
+
+.s-History{
+ display: block;   
+ border-style:hidden;
+ background-color:darkgray;
+
+}
+
