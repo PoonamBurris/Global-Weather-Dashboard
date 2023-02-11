@@ -24,25 +24,27 @@
     <body>
       <!-- Class for Search section-->
 <div class="container">
-<div class="row justify-content-evenly">
-<div class="col-12 col-md-6 column-gap-2">
+<div class="row">
+  <div class="col-md-3">
 <!-- Search input form-->
-<div class="container overflow-hidden text-left">
-      <div class="p-3 d-grid gap-2">
+<div class="container  text-left">
+      <div class="p-0 d-grid gap-2">
         <label for="exampleDataList" class="form-label">Search for a City:</label>
-        <input id= "input-place" class="form-control w-50 p-2" list="datalistOptions" placeholder="Type to search...">
-        <button id = "btn-search"class="btn btn-primary btn-lg w-50 p-2 " type="button">Search</button>
-        <hr class= "w-50">
+        <input id= "input-place" class="form-control w-150 p-2" list="datalistOptions" placeholder="Type to search...">
+        <button id = "btn-search"class="btn btn-primary btn-lg w-150 p-2 " onclick="searchWeather()" type="button">Search</button>
+        <hr class= "w-150">
       </div>
     </div>
     <!-- Search History section (List)-->
-      <div class="col-12 col-md-6 column-gap-2">
+     
       <div id="sHistory" class="p-3"> </div>
       </div>
-</div>
+  </div>
+
     
     <!-- User Input place weather is displayed here-->
-    <div class="col-12 col-md-6 column-gap-2">
+    <div class="col-9 d-inline">
+      
       <div id="weather-today" class="row d-block" >
         <!--<div class="card">
           <div class="card-body border border-white">-->
@@ -54,7 +56,7 @@
               <!-- current weather title -->
               <div class="curTitle">
                   <h2 id="current-title" class="current-title d-inline">CT</h2>
-                  <img id="icon" class="d-inline" src="" alt="">
+                  <img id="c-icon" class="d-inline" src="" alt="">
               </div>
               <!-- current weather temperature -->
               <p id="cur-temp"></p>
@@ -63,66 +65,85 @@
               <!-- current weather humidity -->
               <p id="cur-hum"></p>  
           </div>
-        </div>
-          
         
         
-    
       <!-- User Input place weather for next 5 days are displayed here-->
-          <!--<div class="card">
-            <div class="card-body">-->
-              <div class="row predfivecard d-block">
-              <h3 id ="weather-five" class="card-title">5day</h3>
-              <!-- Cards to display predicted 1 or next five days weather-->
-              <div class="predictedDt">
-                <p class="date1" id="date1"></p>
-                <img id="icon1" src="" alt="">
-                <p class="temp1" id="temp1"></p>
-                <p class="wind1" id="wind1"></p>
-                <p class="hum1" id="hum1"></p>
-              </div>
-              <!-- Cards to display predicted 2 of next five days weather-->
-              <div class="predictedDt">
-                <p class="date2" id="date2"></p>
-                <img id="icon2" src="" alt="">
-                <p class="temp2" id="temp2"></p>
-                <p class="wind2" id="wind2"></p>
-                <p class="hum2" id="hum2"></p>
-              </div>
-              <!-- Cards to display predicted 3 of next five days weather-->
-              <div class="predictedDt">
-                <p class="date3" id="date3"></p>
-                <img id="icon3" src="" alt="">
-                <p class="temp3" id="temp3"></p>
-                <p class="wind3" id="wind3"></p>
-                <p class="hum3" id="hum3"></p>
-              </div>
-              <!-- Cards to display predicted 4 of next five days weather-->
-              <div class="predictedDt">
-                <p class="date4" id="date4"></p>
-                <img id="icon4" src="" alt="">
-                <p class="temp4" id="temp4"></p>
-                <p class="wind4" id="wind4"></p>
-                <p class="hum4" id="hum4"></p>
-              </div>
-              <!-- Cards to display predicted 5 of next five days weather-->
-              <div class="predictedDt">
-                <p class="date5" id="date5"></p>
-                <img id="icon5" src="" alt="">
-                <p class="temp5" id="temp5"></p>
-                <p class="wind5" id="wind5"></p>
-                <p class="hum5" id="hum5"></p>
-              </div>
-            </div>
-
-              </div>
+      <div class="row row-cols-md-12">
+        <div class="col mb-12 d-inline w-auto">
+          <br>
+          <div class="card text-bg-dark">
+                      <div class="card-body">
+          
+              <h5 class="date" id="date1">02/11/2023</h5>
+                      <img id="icon1" src="" alt="">
+                      <p class="tempf" id="temp1">temp1</p>
+                      <p class="windf" id="wind1">wind1</p>
+                      <p class="humf" id="hum1">hum1</p>
             </div>
           </div>
         </div>
-  </div>
- </div>
-</div>
-</div>
-<script scr="Assets/script.js"></script> 
+        <!-- Cards to display predicted 2 of next five days weather-->
+        <div class="col mb-12 d-inline w-auto">
+          
+          <br>
+          <div class="card text-bg-dark">
+            <div class="card-body ">
+          
+              <h5 class="date" id="date1">02/11/2023</h5>
+                      <img id="icon1" src="" alt="">
+                      <p class="tempf" id="temp1">temp2</p>
+                      <p class="windf" id="wind1">wind2</p>
+                      <p class="humf" id="hum1">hum2</p>
+            </div>
+          </div>
+        </div>
+        <!-- Cards to display predicted 3 of next five days weather-->
+        <div class="col mb-12 d-inline w-auto">
+          <br>
+          <div class="card text-bg-dark">
+            <div class="card-body">
+          
+              <h5 class="date" id="date1">02/12/2023</h5>
+                      <img id="icon1" src="" alt="">
+                      <p class="tempf" id="temp1">temp3</p>
+                      <p class="windf" id="wind1">wind3</p>
+                      <p class="humf" id="hum1">hum3</p>
+            </div>
+          </div>
+        </div>
+        <!-- Cards to display predicted 4 of next five days weather-->
+        <div class="col mb-12 d-inline w-auto">
+          <br>
+          <div class="card text-bg-dark">
+            <div class="card-body">
+          
+              <h5 class="date" id="date1">02/13/2023</h5>
+                      <img id="icon1" src="" alt="">
+                      <p class="tempf" id="temp1">temp4</p>
+                      <p class="windf" id="wind1">wind4</p>
+                      <p class="humf" id="hum1">hum4</p>
+            </div>
+          </div>
+        </div>
+        <!-- Cards to display predicted 5 of next five days weather-->
+        <div class="col mb-12 d-inline w-auto">
+          <br>
+          <div class="card text-bg-dark">
+            <div class="card-body">
+          
+              <h5 class="date" id="date1">02/14/2023</h5>
+                      <img id="icon1" src="" alt="">
+                      <p class="tempf" id="temp1">temp5</p>
+                      <p class="windf" id="wind1">wind5</p>
+                      <p class="humf" id="hum1">hum5</p>
+            </div>
+          </div>
+        </div>
+        </div>
+      </div>
+
+
+
+<script src="Assets/script.js"></script> 
     </body>
 </html>
