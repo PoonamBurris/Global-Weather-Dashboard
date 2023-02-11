@@ -7,7 +7,6 @@ var buttonSearch = document.getElementById("btn-search");
 var searchHis = document.getElementById("sHistory");
 var weathertoday=$("#weather-today");
 var wToday = document.getElementById("current-title");
-var WFive = document.getElementById("weather-five");
 var currentTemp = document.getElementById("cur-temp");
 var currenthum = document.getElementById("cur-hum");
 var currentwindsp = document.getElementById("cur-windSp");
@@ -34,6 +33,7 @@ var humtwo = document.getElementById("hum2")
 var humthree = document.getElementById("hum3")
 var humfour = document.getElementById("hum4")
 var humfive = document.getElementById("hum5")
+var fcicon1 = document.getElementById("icon1");
 
 
 
@@ -77,19 +77,91 @@ var humfive = document.getElementById("hum5")
         .then(data => {
             //Forecast for 1 of next 5 days
             console.log("forecast",  data)
-            var fcdate1 = data ["list"][3]["dt"]
-            var formateddate1 = fcdate1;
+            var fcdate1 = data ["list"][3]["dt_txt"]
+            var formateddate1 = dayjs(fcdate1).format('MM/DD/YYYY');
             dateone.innerHTML= formateddate1
+
+            var fccicon1 = data['list'][3]['weather']['icon'];
+            var fciconurl = "http://openweathermap.org/img/w/" + fccicon1 + ".png";
+             $('#icon1').attr('src',fciconurl);
         
-            var fctemp2 = data ["list"][3]["main"]["temp"]
-            var cvfctemp2 = Math.round((fctemp2-273.15) * 1.8 +32);
-            tempone.innerHTML= "Temp: " + cvfctemp2 + " °F"
+            var fctemp1 = data ["list"][3]["main"]["temp"]
+            var cvfctemp1 = Math.round((fctemp1-273.15) * 1.8 +32);
+            tempone.innerHTML= "Temp: " + cvfctemp1 + " °F"
 
             var fcwind1 = data ["list"][3]["wind"]["speed"]
             windone.innerHTML= "Wind: " + fcwind1 + " MPH"
 
             var fchum1 = data ["list"][3]["main"]["humidity"]
             humone.innerHTML= "Humidity: " + fchum1 + " %"
+
+            //Forecast for day2 of next 5 days
+            var fcdate2 = data ["list"][10]["dt_txt"]
+            var formateddate2 = dayjs(fcdate2).format('MM/DD/YYYY');
+            datetwo.innerHTML= formateddate2
+        
+            var fctemp2 = data ["list"][10]["main"]["temp"]
+            var cvfctemp2 = Math.round((fctemp2-273.15) * 1.8 +32);
+            temptwo.innerHTML= "Temp: " + cvfctemp2 + " °F"
+
+            var fcwind2 = data ["list"][10]["wind"]["speed"]
+            windtwo.innerHTML= "Wind: " + fcwind2 + " MPH"
+
+            var fchum2 = data ["list"][10]["main"]["humidity"]
+            humtwo.innerHTML= "Humidity: " + fchum2 + " %"
+
+             //Forecast for day3 of next 5 days
+             var fcdate3 = data ["list"][18]["dt_txt"]
+             var formateddate3 = dayjs(fcdate3).format('MM/DD/YYYY');
+             datethree.innerHTML= formateddate3
+         
+             var fctemp3 = data ["list"][18]["main"]["temp"]
+             var cvfctemp3 = Math.round((fctemp3-273.15) * 1.8 +32);
+             tempthree.innerHTML= "Temp: " + cvfctemp3 + " °F"
+ 
+             var fcwind3 = data ["list"][18]["wind"]["speed"]
+             windthree.innerHTML= "Wind: " + fcwind3 + " MPH"
+ 
+             var fchum3 = data ["list"][18]["main"]["humidity"]
+             humthree.innerHTML= "Humidity: " + fchum3 + " %"
+
+             //Forecast for day4 of next 5 days
+             var fcdate4 = data ["list"][26]["dt_txt"]
+             var formateddate4 = dayjs(fcdate4).format('MM/DD/YYYY');
+             datefour.innerHTML= formateddate4
+         
+             var fctemp4 = data ["list"][26]["main"]["temp"]
+             var cvfctemp4 = Math.round((fctemp3-273.15) * 1.8 +32);
+             tempfour.innerHTML= "Temp: " + cvfctemp4 + " °F"
+ 
+             var fcwind4 = data ["list"][26]["wind"]["speed"]
+             windfour.innerHTML= "Wind: " + fcwind4 + " MPH"
+ 
+             var fchum4 = data ["list"][26]["main"]["humidity"]
+             humfour.innerHTML= "Humidity: " + fchum4 + " %"
+
+             //Forecast for day5 of next 5 days
+             var fcdate5 = data ["list"][34]["dt_txt"]
+             var formateddate5 = dayjs(fcdate5).format('MM/DD/YYYY');
+             datefive.innerHTML= formateddate5
+         
+             var fctemp5 = data ["list"][34]["main"]["temp"]
+             var cvfctemp5 = Math.round((fctemp3-273.15) * 1.8 +32);
+             tempfive.innerHTML= "Temp: " + cvfctemp5 + " °F"
+ 
+             var fcwind5 = data ["list"][34]["wind"]["speed"]
+             windfive.innerHTML= "Wind: " + fcwind5 + " MPH"
+ 
+             var fchum5 = data ["list"][34]["main"]["humidity"]
+             humfive.innerHTML= "Humidity: " + fchum5 + " %"
+
+
+
+
+
+
+
+
 
 
 
@@ -126,7 +198,7 @@ var humfive = document.getElementById("hum5")
 
 
 
-               // weather5.innerHTML="5-Day Forecast : ";
+                weather5.innerHTML="5-Day Forecast : ";
 
 
 
