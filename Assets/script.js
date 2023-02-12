@@ -38,13 +38,13 @@ var humfive = document.getElementById("hum5")
 var fcicon1 = document.getElementById("icon1");
 
 
-     function searchWeather(e){
-        console.log(inputPlace.value);
-        if(inputPlace.value === "") {
-            console.log(e.target.innerHTML);
-            inputPlace.value = e. target.innerHTML;
-        }
-
+     function searchWeather(){
+        //console.log(inputPlace.value);
+       // if(inputPlace.value === "") {
+         //   console.log(e.target.innerHTML);
+         //   inputPlace.value = e. target.innerHTML;
+       // }
+       
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=2a61ce1f2b45ac6ba178c904023be7e9")
     .then(response => response.json())
        .then(data => {
@@ -65,11 +65,7 @@ var fcicon1 = document.getElementById("icon1");
 
        var clatitude = data['coord']['lat'];
         var clongitutude = data['coord']['lon'];
-       //var latvalue= dateone.innerHTML = clatitude;
-       //var lonvalue= tempone.innerHTML=clongitutude;
-
-      
-        //Adds border to Current weather of the place
+     
         weathertoday.addClass("weather-today")
         return { 
             lat: clatitude,
@@ -176,83 +172,43 @@ var fcicon1 = document.getElementById("icon1");
              var fchum5 = data ["list"][34]["main"]["humidity"]
              humfive.innerHTML= "Humidity: " + fchum5 + " %"
 
-           // const forecastlistEL = document.getElementById("forecast-list")
-            
-            //data.list.forEach(item => {
-               // const fcTemp = item.main.temp;
-                //const fcHum = item.main.humidity;
-                //const fcWind = item.wind.speed;
-                //const fcDate = dayjs(item.dt).format('M/DD/YYYY');
-                //const fcContainer = document.createElement("p");
-                
-                //const fcTempEL = document.createElement("p");
-                //fcTempEL.innerHTML= `Temp: ${fcTemp}`
-                
-               // fcTempEL.style.backgroundColor= "grey"
-               // fcTempEL.style.color= "white"
-                //fcTempEL.style.display= "block"
-               // fcContainer.appendChild(fcTempEL)
-
-                //const fcWindEL = document.createElement("p");
-                //fcWindEL.innerHTML= `Wind: ${fcWind}`
-                
-                //fcWindEL.style.backgroundColor= "grey"
-                //fcWindEL.style.color= "white"
-                //fcWindEL.style.display= "block"
-                //fcContainer.appendChild(fcWindEL)
-
-
-
                 weather5.innerHTML="5-Day Forecast : ";
-                inputPlace.value = "" ;
+                //inputPlace.value = "" ;
                 //forecastlistEL.appendChild(fcContainer)
 
+                //let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
+                //const inputValue = document.getElementById('input-place').value;
+               // getLocalStorageResults.push(inputValue)
+               // localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
+              //  for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
+            //var btn = document.createElement('button');
+           // btn.className= ('button-l');
+           // btn.getElementsByClassName.onclick=searchWeather;
+            //btn.addEventListener("click", searchWeather, false);
+           // btn.textContent = getLocalStorageResults[i];
+           // sHistory.append(btn)
+       //}  
+       doLocal();     
 
         });
         
     });
+     }
 
-//let getLocalStorageResults = localStorage.getItem('poonamWeatherDashboard') ?? [];
-let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
-const inputValue = document.getElementById('input-place').value;
+     function doLocal(){
+
+        const inputValue = document.getElementById('input-place').value;
 getLocalStorageResults.push(inputValue)
 localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
 for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
     var btn = document.createElement('button');
     btn.className= ('button-l');
-    btn.getElementsByClassName.onclick= searchWeather();
+    btn.getElementsByClassName.onclick= searchWeather;
     //btn.addEventListener("click", searchWeather, false);
     btn.textContent = getLocalStorageResults[i];
     sHistory.append(btn)
-}       
-  
-    //const inputValue = document.getElementById('input-place').value;
-    
-   // const tempSet = getLocalStorageResults, inputValue]);
-    
-   //const arrayFromSet = Array.from(tempSet);
-    
-   ////getLocalStorageResults = arrayFromSet;
-   //localStorage.setItem('poonamWeatherDashboard', arrayFromSet);
-    
-   //document.getElementById('sHistory').innerHTML = getLocalStorageResults;
-   //searchHis.addClass('s-History');
-  // for(var i =searchHis.length -1; i>=0; i--){
-   // var btn =document.createElement('button')
-   // btn.textContent = searchHis[i];
-   //}
-       
-        //For displaying current Weather of user inputed place
-        
-
-         //for (var i=1; i< 6; i++){
-         //   var ftempF = Math.round(data.daily[i].temp.day);
-
-         //   var fchumidity = data.daily[i].humidity;
-         //   var fcicon = data.daily[i].weather[0].icon;
-         //   var fcwindsp = 
-         }
-
+} 
+     }
          
         
         
