@@ -39,11 +39,7 @@ var fcicon1 = document.getElementById("icon1");
 
 
      function searchWeather(){
-        //console.log(inputPlace.value);
-       // if(inputPlace.value === "") {
-         //   console.log(e.target.innerHTML);
-         //   inputPlace.value = e. target.innerHTML;
-       // }
+       
        
     fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=9c795fff2ea9a6d153e76124b92f804f")
     .then(response => response.json())
@@ -172,44 +168,31 @@ var fcicon1 = document.getElementById("icon1");
              var fchum5 = data ["list"][34]["main"]["humidity"]
              humfive.innerHTML= "Humidity: " + fchum5 + " %"
 
-                weather5.innerHTML="5-Day Forecast : ";
-                //inputPlace.value = "" ;
-                //forecastlistEL.appendChild(fcContainer)
-
-                //let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
-                //const inputValue = document.getElementById('input-place').value;
-               // getLocalStorageResults.push(inputValue)
-               // localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
-              //  for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
-            //var btn = document.createElement('button');
-           // btn.className= ('button-l');
-           // btn.getElementsByClassName.onclick=searchWeather;
-            //btn.addEventListener("click", searchWeather, false);
-           // btn.textContent = getLocalStorageResults[i];
-           // sHistory.append(btn)
-       //}  
-       //doLocal();     
+                weather5.innerHTML="5-Day Forecast : "; 
+                //Call local storage function once search button is clicked
+                doLocal();
 
         });
         
     });
      }
-
-     function doLocal(){
-        let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
-        const inputValue = document.getElementById('input-place').value;
-getLocalStorageResults.push(inputValue)
-localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
-for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
+     // Saves each search place in local storage and displays as clickable button in search history
+    function doLocal(){
+    let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
+    const inputValue = document.getElementById('input-place').value;
+    getLocalStorageResults.push(inputValue)
+    localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
+    for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
     var btn = document.createElement('button');
     btn.className= ('button-l');
-    btn.getElementsByClassName.onclick= searchWeather;
-    //btn.addEventListener("click", searchWeather, false);
     btn.textContent = getLocalStorageResults[i];
     sHistory.append(btn)
+    
+     }; 
 } 
-     }
+     //Call searchWeather function on click of newly created seach history places buttons
+    sHistory.addEventListener("click", searchWeather)
+    //console.log("Clicked element!");
+    
          
-        
-        
         
