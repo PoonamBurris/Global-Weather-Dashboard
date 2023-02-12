@@ -55,7 +55,7 @@
             <!--<div id="current-weather-container" class="row d-block"> -->
               <!-- current weather title -->
               <div class="curTitle">
-                  <h2 id="current-title" class="current-title d-inline">CT</h2>
+                  <h2 id="current-title" class="current-title d-inline"></h2>
                   <img id="c-icon" class="d-inline" src="" alt="">
               </div>
               <!-- current weather temperature -->
@@ -68,11 +68,15 @@
         <div id="weather-five" style="font-size: 25px;"></div>
         
       <!-- User Input place weather for next 5 days are displayed here-->
-      <div class="row row-cols-md-12">
+      <div class="row row-cols-md-12" >
+
         <div class="col mb-12 d-inline w-auto">
           <br>
-          <div class="card text-bg-dark">
+         
+          <div class="card border-0"  >
+            <div id="five-cards">
                       <div class="card-body">
+                        
           
               <h5 class="date" id="date1"></h5>
                       <img id="icon1" src="" alt="">
@@ -82,12 +86,14 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- Cards to display predicted 2 of next five days weather-->
         <div class="col mb-12 d-inline w-auto">
           
           <br>
-          <div class="card text-bg-dark">
-            <div class="card-body ">
+          <div class="card border-0" >
+            <div id="five-cards1">
+            <div class="card-body" >
           
               <h5 class="date" id="date2"></h5>
                       <img id="icon2" src="" alt="">
@@ -97,10 +103,12 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- Cards to display predicted 3 of next five days weather-->
         <div class="col mb-12 d-inline w-auto">
           <br>
-          <div class="card text-bg-dark">
+          <div class="card border-0">
+            <div id="five-cards2">
             <div class="card-body">
           
               <h5 class="date" id="date3"></h5>
@@ -111,10 +119,12 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- Cards to display predicted 4 of next five days weather-->
         <div class="col mb-12 d-inline w-auto">
           <br>
-          <div class="card text-bg-dark">
+          <div class="card border-0">
+            <div id="five-cards3">
             <div class="card-body">
           
               <h5 class="date" id="date4"></h5>
@@ -125,10 +135,12 @@
             </div>
           </div>
         </div>
+      </div>
         <!-- Cards to display predicted 5 of next five days weather-->
         <div class="col mb-12 d-inline w-auto">
           <br>
-          <div class="card text-bg-dark">
+          <div class="card border-0">
+            <div id="five-cards4">
             <div class="card-body">
           
               <h5 class="date" id="date5"></h5>
@@ -141,6 +153,7 @@
         </div>
         </div>
       </div>
+    </div>
 
 
 
