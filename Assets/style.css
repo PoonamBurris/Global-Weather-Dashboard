@@ -22,10 +22,12 @@
     font-size: 15px;
 }
 
-.s-History{
- display: block;   
- border-style:hidden;
- background-color:darkgray;
-
+.button-l{
+    display: block;
+    background-color: gray;
+    width: 100%;
+    font-size: 20px;
+    margin-bottom: 6px;
+    color: white;
 }
 

@@ -208,20 +208,35 @@ var fcicon1 = document.getElementById("icon1");
         )
     })
 
-let getLocalStorageResults = localStorage.getItem('poonamWeatherDashboard') ?? [];
-            
+//let getLocalStorageResults = localStorage.getItem('poonamWeatherDashboard') ?? [];
+let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
+const inputValue = document.getElementById('input-place').value;
+getLocalStorageResults.push(inputValue)
+localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
+for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
+    var btn = document.createElement('button');
+    btn.className= ('button-l');
+    //btn.getElementsByClassName.onclick= searchWeather();
+    btn.addEventListener("click", searchWeather, false);
+    btn.textContent = getLocalStorageResults[i];
+    sHistory.append(btn)
+}       
   
-    const inputValue = document.getElementById('input-place').value;
+    //const inputValue = document.getElementById('input-place').value;
     
-    const tempSet = new Set([...getLocalStorageResults, inputValue]);
+   // const tempSet = getLocalStorageResults, inputValue]);
     
-   const arrayFromSet = Array.from(tempSet);
+   //const arrayFromSet = Array.from(tempSet);
     
-   getLocalStorageResults = arrayFromSet;
-   localStorage.setItem('poonamWeatherDashboard', arrayFromSet);
+   ////getLocalStorageResults = arrayFromSet;
+   //localStorage.setItem('poonamWeatherDashboard', arrayFromSet);
     
-    document.getElementById('sHistory').innerHTML = getLocalStorageResults;
-   searchHis.addClass('s-History');
+   //document.getElementById('sHistory').innerHTML = getLocalStorageResults;
+   //searchHis.addClass('s-History');
+  // for(var i =searchHis.length -1; i>=0; i--){
+   // var btn =document.createElement('button')
+   // btn.textContent = searchHis[i];
+   //}
        
         //For displaying current Weather of user inputed place
         
