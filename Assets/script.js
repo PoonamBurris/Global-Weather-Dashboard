@@ -1,6 +1,6 @@
 //API kep for OpenWeather API
 //const APIKEY = "edf90ab7d1e2872323a8f45bf7ec1e92"
-const APIKEY ="2a61ce1f2b45ac6ba178c904023be7e9"
+const APIKEY ="9c795fff2ea9a6d153e76124b92f804f"
 var places =[];
 var apiurl ="https://api.openweathermap.org/data/2.5/forecast?lat={placelat}&lon={placelon}&appid={APIKEY}"
 var inputPlace = document.getElementById("input-place");
@@ -45,7 +45,7 @@ var fcicon1 = document.getElementById("icon1");
          //   inputPlace.value = e. target.innerHTML;
        // }
        
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=2a61ce1f2b45ac6ba178c904023be7e9")
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=9c795fff2ea9a6d153e76124b92f804f")
     .then(response => response.json())
        .then(data => {
         //For displaying current Weather of user inputed place
@@ -188,7 +188,7 @@ var fcicon1 = document.getElementById("icon1");
            // btn.textContent = getLocalStorageResults[i];
            // sHistory.append(btn)
        //}  
-       doLocal();     
+       //doLocal();     
 
         });
         
@@ -196,7 +196,7 @@ var fcicon1 = document.getElementById("icon1");
      }
 
      function doLocal(){
-
+        let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
         const inputValue = document.getElementById('input-place').value;
 getLocalStorageResults.push(inputValue)
 localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
