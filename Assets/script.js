@@ -1,5 +1,6 @@
 //API kep for OpenWeather API
-const APIKEY = "edf90ab7d1e2872323a8f45bf7ec1e92"
+//const APIKEY = "edf90ab7d1e2872323a8f45bf7ec1e92"
+const APIKEY ="2a61ce1f2b45ac6ba178c904023be7e9"
 var places =[];
 var apiurl ="https://api.openweathermap.org/data/2.5/forecast?lat={placelat}&lon={placelon}&appid={APIKEY}"
 var inputPlace = document.getElementById("input-place");
@@ -37,11 +38,14 @@ var humfive = document.getElementById("hum5")
 var fcicon1 = document.getElementById("icon1");
 
 
+     function searchWeather(e){
+        console.log(inputPlace.value);
+        if(inputPlace.value === "") {
+            console.log(e.target.innerHTML);
+            inputPlace.value = e. target.innerHTML;
+        }
 
-
-
-     function searchWeather(){
-    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=edf90ab7d1e2872323a8f45bf7ec1e92")
+    fetch("https://api.openweathermap.org/data/2.5/weather?q=" + inputPlace.value + "&APPID=2a61ce1f2b45ac6ba178c904023be7e9")
     .then(response => response.json())
        .then(data => {
         //For displaying current Weather of user inputed place
@@ -200,13 +204,13 @@ var fcicon1 = document.getElementById("icon1");
 
 
                 weather5.innerHTML="5-Day Forecast : ";
-
+                inputPlace.value = "" ;
                 //forecastlistEL.appendChild(fcContainer)
 
 
-        }
-        )
-    })
+        });
+        
+    });
 
 //let getLocalStorageResults = localStorage.getItem('poonamWeatherDashboard') ?? [];
 let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
@@ -216,8 +220,8 @@ localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageRes
 for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
     var btn = document.createElement('button');
     btn.className= ('button-l');
-    //btn.getElementsByClassName.onclick= searchWeather();
-    btn.addEventListener("click", searchWeather, false);
+    btn.getElementsByClassName.onclick= searchWeather();
+    //btn.addEventListener("click", searchWeather, false);
     btn.textContent = getLocalStorageResults[i];
     sHistory.append(btn)
 }       
