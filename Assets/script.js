@@ -8,12 +8,18 @@ var buttonSearch = document.getElementById("btn-search");
 //var searchHis = document.getElementById("sHistory");
 var searchHis = $("#sHistory");
 var weathertoday=$("#weather-today");
+var fivecardsstyle = $("#five-cards");
+var fivecardsstyle1 = $("#five-cards1");
+var fivecardsstyle2 = $("#five-cards2");
+var fivecardsstyle3 = $("#five-cards3");
+var fivecardsstyle4 = $("#five-cards4");
 var wToday = document.getElementById("current-title");
 var currentTemp = document.getElementById("cur-temp");
 var currenthum = document.getElementById("cur-hum");
 var currentwindsp = document.getElementById("cur-windSp");
 var currentDate = dayjs().format('M/DD/YYYY');
-var currenticon = document.getElementById("c-icon");
+//var currenticon = document.getElementById("c-icon");
+var currenticon = $("c-icon");
 var weather5 =document.getElementById("weather-five");
 var dateone = document.getElementById("date1")
 var datetwo = document.getElementById("date2")
@@ -61,8 +67,13 @@ var fcicon1 = document.getElementById("icon1");
 
        var clatitude = data['coord']['lat'];
         var clongitutude = data['coord']['lon'];
-     
+        currenticon.addClass("c-icon")
         weathertoday.addClass("weather-today")
+        fivecardsstyle.addClass("five-cards")
+        fivecardsstyle1.addClass("five-cards1")
+        fivecardsstyle2.addClass("five-cards2")
+        fivecardsstyle3.addClass("five-cards3")
+        fivecardsstyle4.addClass("five-cards4")
         return { 
             lat: clatitude,
             lon: clongitutude
@@ -72,6 +83,7 @@ var fcicon1 = document.getElementById("icon1");
         fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${APIKEY}&cnt=40`)
         .then(response => response.json())
         .then(data => {
+            fivecardsstyle.addClass("fivecards")
             //Forecast for 1 of next 5 days
             console.log("forecast",  data)
             var fcdate1 = data ["list"][3]["dt_txt"]
@@ -170,7 +182,7 @@ var fcicon1 = document.getElementById("icon1");
 
                 weather5.innerHTML="5-Day Forecast : "; 
                 //Call local storage function once search button is clicked
-                doLocal();
+                
 
         });
         
@@ -178,21 +190,27 @@ var fcicon1 = document.getElementById("icon1");
      }
      // Saves each search place in local storage and displays as clickable button in search history
     function doLocal(){
+    //Gets stored places from local storage
     let getLocalStorageResults = JSON.parse(localStorage.getItem('poonamWeatherDashboard')) || [];
     const inputValue = document.getElementById('input-place').value;
     getLocalStorageResults.push(inputValue)
     localStorage.setItem('poonamWeatherDashboard', JSON.stringify(getLocalStorageResults));
-    for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
+    //for (var i = getLocalStorageResults.length -1; i >= 0; i--) {
+        for (var i = 0; i< getLocalStorageResults.length; i++){
     var btn = document.createElement('button');
     btn.className= ('button-l');
     btn.textContent = getLocalStorageResults[i];
     sHistory.append(btn)
     
+    localStorage.clear();
      }; 
+
+     
 } 
      //Call searchWeather function on click of newly created seach history places buttons
-    sHistory.addEventListener("click", searchWeather)
-    //console.log("Clicked element!");
+    sHistory.addEventListener("click", function(event){
+    console.log("Clicked");})
+    buttonSearch.addEventListener("click", doLocal)
     
          
         

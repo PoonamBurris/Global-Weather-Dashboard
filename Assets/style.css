@@ -3,13 +3,19 @@
     border-color: grey;
     border-width: 2px;
 }
+#weather-today{
+    display: none;
+}
 #cur-temp,#cur-windSp,#cur-hum {
     font-size: 20px;
     margin: 15px 20px;
 } 
-#c-icon{
+.c-icon{
     width :80px;
     height: 80px;
+}
+#c-icon{
+    display: none;
 }
 #forecast-list{
     display: inline-block;
@@ -17,9 +23,11 @@
 .container{
     display: flex;
     column-gap: 10px;
+    
 }
 .card-body{
     font-size: 15px;
+    border-color: white;
 }
 
 .button-l{
@@ -28,6 +36,10 @@
     width: 100%;
     font-size: 20px;
     margin-bottom: 6px;
+    color: white;
+}
+.five-cards, .five-cards1, .five-cards2, .five-cards3, .five-cards4{
+    background-color: grey;
     color: white;
 }
 
